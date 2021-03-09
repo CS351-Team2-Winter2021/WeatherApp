@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('current_temp/', include('temperature.urls'))
+    path('temperature/', include('temperature.urls'))
 ]
