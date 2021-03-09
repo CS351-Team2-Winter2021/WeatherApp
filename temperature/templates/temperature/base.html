@@ -6,12 +6,8 @@
 <ul>
     {% for item in data %}
       <li>{{item.0}} has a temperature of {{item.1.temp}}</li>
-      <a href="/temperature/historicaldata/{{item.1.place_id}}/">more info</a>
     {% endfor %}
 <ul>
 <iframe width="600" height="700" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-152.0947265625%2C15.707662769583518%2C-50.58105468750001%2C55.1286490684888&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=5/37.996/-101.338">View Larger Map</a></small>
 </body>
 </html>
-
-=======
-{% extends 'temperature/base.html' %}

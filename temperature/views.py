@@ -4,6 +4,8 @@ from temperature.models import location,tempEntry
 from plotly.offline import plot
 import time
 from plotly.graph_objs import Scatter
+import random
+
 # Create your views here.
 
 def recent_temp(request):
@@ -40,3 +42,5 @@ def getGraph(id):
             X.append(i.get('time'))
             Y.append(i.get('temp'))
     return X,Y
+        data.append([i.get('city'),tempData.filter(place_id=i.get('id')).last()])
+    return data
