@@ -24,4 +24,5 @@ data = bme280.sample(bus, address, calibration_parameters)
 temperature = int(data.temperature)
 
 # create a temperature entry
-requests.get('ec2-3-139-88-44.us-east-2.compute.amazonaws.com:8000/temperature/writetemp/1/' + str(temperature))
+url = 'http://ec2-18-218-173-23.us-east-2.compute.amazonaws.com:8000/temperature/writetemp/1/' + str(temperature)
+requests.get(url)
