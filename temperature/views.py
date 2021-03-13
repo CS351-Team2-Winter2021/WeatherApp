@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, HttpRequest
 from temperature.models import location,tempEntry
 from plotly.offline import plot
 import time
@@ -28,9 +29,12 @@ def getData(time):
         data.append([i.get('city'),tempData.filter(place_id=i.get('id')).last(),i.get('id')])
     return data
 
+@csrf_exempt
 def write_temp(request,temp,ID):
-    temp1=tempEntry(place_id=ID,temp=temp,time=time.time())
-    temp1.save()
+    print(ID)
+    if location.objects.get(id=ID).access_key==request.POST["key"]:
+        temp1=tempEntry(place_id=ID,temp=temp,time=time.time())
+        temp1.save()
     return redirect('/temperature/')
 
 def getGraph(id):
@@ -42,5 +46,3 @@ def getGraph(id):
             X.append(i.get('time'))
             Y.append(i.get('temp'))
     return X,Y
-        data.append([i.get('city'),tempData.filter(place_id=i.get('id')).last()])
-    return data
