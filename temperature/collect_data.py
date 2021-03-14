@@ -32,7 +32,7 @@ url = 'http://ec2-18-218-173-23.us-east-2.compute.amazonaws.com/temperature/writ
 
 # read key.txt to get the key for the Flint node
 with open('key.txt') as f:
-    key = f.read()
+    key = f.read().strip()
 
 # send the temperature entry
 dict = {'key':str(key)}
