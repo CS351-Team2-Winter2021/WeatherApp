@@ -5,7 +5,7 @@
 <h1>{{title}}</h1>
 <ul>
     {% for item in data %}
-      <li>{{item.0}} has a temperature of {{item.1.temp}}</li>
+      <li>{{item.0}} has a temperature of {{item.1.temp}} F</li>
       <a href="/temperature/historicaldata/{{item.1.place_id}}/">more info</a>
     {% endfor %}
 <ul>

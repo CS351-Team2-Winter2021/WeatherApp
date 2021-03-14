@@ -20,9 +20,20 @@ except:
 # take a reading, return a compensated_reading object
 data = bme280.sample(bus, address, calibration_parameters)
 
-# save the temperature
-temperature = int(data.temperature)
+# convert temperature to fahrenheit
+temperature = (int(data.temperature) * 1.8) + 32
+temperature = int(temperature)
+
+# save the timestamp
+time = data.timestamp
 
 # create a temperature entry
-url = 'http://ec2-18-218-173-23.us-east-2.compute.amazonaws.com:8000/temperature/writetemp/1/' + str(temperature)
-requests.get(url)
+url = 'http://ec2-18-218-173-23.us-east-2.compute.amazonaws.com/temperature/writetemp/1/' + str(temperature)
+
+# read key.txt to get the key for the Flint node
+with open('key.txt') as f:
+    key = f.read()
+
+# send the temperature entry
+dict = {'key':str(key)}
+requests.post(url, dict)
