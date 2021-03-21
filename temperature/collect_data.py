@@ -27,8 +27,8 @@ while True:
     data = bme280.sample(bus, address, calibration_parameters)
     
     # convert temperature to fahrenheit
-    temperature = (int(data.temperature) * 1.8) + 32
-    temperature = int(temperature)
+    temperature = (data.temperature * 1.8) + 32
+    temperature = round(temperature, 2)
     
     # save the timestamp
     timestamp = data.timestamp
