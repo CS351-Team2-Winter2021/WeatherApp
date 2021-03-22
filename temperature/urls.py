@@ -20,5 +20,5 @@ from . import views
 urlpatterns = [
     path('', views.recent_temp, name='recent_temp'),
     path('historicaldata/<int:ID>/',views.historical_data,name='historical_data'),
-    path('writetemp/<int:ID>/<int:temp>',views.write_temp,name='write_temp')
+    path('writetemp/<int:ID>/<str:temp>',views.write_temp,name='write_temp')
 ]

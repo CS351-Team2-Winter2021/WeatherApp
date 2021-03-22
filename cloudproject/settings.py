@@ -25,7 +25,7 @@ SECRET_KEY = 'pdo@h$2hoyg(lv0uo+zov+9p2t@z2s7em&#l6dg4r#_q*(l8y2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.compute.amazonaws.com']
 
 
 # Application definition
