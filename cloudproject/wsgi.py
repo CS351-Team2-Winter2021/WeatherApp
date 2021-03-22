@@ -8,9 +8,14 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 """
 
 import os
+import sys
+
 
 from django.core.wsgi import get_wsgi_application
 
+
+sys.path.append('/home/ubuntu/project')
+sys.path.append('/home/ubuntu/project/WeatherApp')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cloudproject.settings')
 
 application = get_wsgi_application()
